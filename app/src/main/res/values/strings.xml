@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Yoga OM App</string>
+    <string name="title_login">Iniciar Sesión</string>
+    <string name="title_register">Crear Cuenta</string>
+    <string name="title_forgot_password">Recuperar Clave</string>
+
+    <string name="hint_email">Correo Electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_confirm_password">Confirmar Contraseña</string>
+
+    <string name="btn_login">INICIAR SESIÓN</string>
+    <string name="btn_register">REGISTRARME</string>
+    <string name="btn_recover">ENVIAR ENLACE DE RECUPERACIÓN</string>
+
+<string name="link_register">¿No tienes cuenta? Regístrate aquí.</string>
+<string name="link_forgot_password">¿Olvidaste tu contraseña?</string>
+<string name="link_back_to_login">Volver a Iniciar Sesión</string>
+
+    <!-- Mensajes de simulación (AlertDialog) -->
+<string name="dialog_success_title">Éxito</string>
+<string name="dialog_login_message">Simulación: ¡Inicio de sesión exitoso! (ID de usuario simulado: 101)</string>
+<string name="dialog_register_message">Simulación: Cuenta creada. Por favor, revisa tu correo para verificar.</string>
+<string name="dialog_recover_message">Simulación: Se ha enviado un enlace de recuperación a tu correo.</string>
+<string name="dialog_ok">Aceptar</string>
+
+    <!-- Splash Screen -->
+<string name="splash_welcome">NAMASTE</string>
+    
+    </resources>
