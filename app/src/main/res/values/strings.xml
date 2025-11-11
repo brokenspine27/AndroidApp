@@ -32,5 +32,6 @@
     <string name="hint_pose_title">Título de la postura</string>
     <string name="hint_pose_description">Descripción de la postura</string>
     <string name="save_pose">Guardar Postura</string>
+    <string name="select_image">Seleccionar Imagen</string>
     
     </resources>

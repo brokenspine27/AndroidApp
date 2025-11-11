@@ -1,6 +1,7 @@
 package com.example.myyogaapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -53,10 +54,13 @@ public class HomeActivity extends AppCompatActivity {
                         Intent data = result.getData();
                         String title = data.getStringExtra("new_title");
                         String description = data.getStringExtra("new_description");
-                        int image = data.getIntExtra("new_image", R.drawable.ic_om_yoga);
+                        String imageUriString = data.getStringExtra("new_image_uri");
 
-                        poses.add(new Pose(title, description, image));
-                        adapter.notifyItemInserted(poses.size() - 1);
+                        if (imageUriString != null) {
+                            Uri imageUri = Uri.parse(imageUriString);
+                            poses.add(new Pose(title, description, imageUri));
+                            adapter.notifyItemInserted(poses.size() - 1);
+                        }
                     }
                 });
     }

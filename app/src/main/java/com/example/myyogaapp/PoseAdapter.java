@@ -28,7 +28,13 @@ public class PoseAdapter extends RecyclerView.Adapter<PoseAdapter.PoseViewHolder
     @Override
     public void onBindViewHolder(@NonNull PoseViewHolder holder, int position) {
         Pose pose = poses.get(position);
-        holder.ivPose.setImageResource(pose.getImageResourceId());
+
+        if (pose.isFromResource()) {
+            holder.ivPose.setImageResource(pose.getImageResourceId());
+        } else {
+            holder.ivPose.setImageURI(pose.getImageUri());
+        }
+
         holder.tvTitle.setText(pose.getTitle());
         holder.tvDescription.setText(pose.getDescription());
 
@@ -36,7 +42,11 @@ public class PoseAdapter extends RecyclerView.Adapter<PoseAdapter.PoseViewHolder
             Intent intent = new Intent(v.getContext(), DetailActivity.class);
             intent.putExtra("title", pose.getTitle());
             intent.putExtra("description", pose.getDescription());
-            intent.putExtra("image", pose.getImageResourceId());
+            if (pose.isFromResource()) {
+                intent.putExtra("image_res_id", pose.getImageResourceId());
+            } else {
+                intent.putExtra("image_uri", pose.getImageUri().toString());
+            }
             v.getContext().startActivity(intent);
         });
     }

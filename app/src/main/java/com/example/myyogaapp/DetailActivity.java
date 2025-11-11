@@ -1,5 +1,6 @@
 package com.example.myyogaapp;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,9 +21,15 @@ public class DetailActivity extends AppCompatActivity {
 
         String title = getIntent().getStringExtra("title");
         String description = getIntent().getStringExtra("description");
-        int image = getIntent().getIntExtra("image", 0);
 
-        ivPose.setImageResource(image);
+        if (getIntent().hasExtra("image_res_id")) {
+            int imageResId = getIntent().getIntExtra("image_res_id", 0);
+            ivPose.setImageResource(imageResId);
+        } else if (getIntent().hasExtra("image_uri")) {
+            String imageUriString = getIntent().getStringExtra("image_uri");
+            ivPose.setImageURI(Uri.parse(imageUriString));
+        }
+
         tvTitle.setText(title);
         tvDescription.setText(description);
 
