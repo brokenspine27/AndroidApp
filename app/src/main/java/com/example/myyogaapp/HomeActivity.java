@@ -19,8 +19,8 @@ public class HomeActivity extends AppCompatActivity {
 
         List<Pose> poses = new ArrayList<>();
         // Add sample data
-        poses.add(new Pose("Pose del Árbol", "Una postura de equilibrio fundamental.", R.drawable.ic_tree_pose));
-        poses.add(new Pose("Pose del Guerrero", "Fortalece las piernas y el tronco.", R.drawable.ic_warrior_pose));
+        poses.add(new Pose("Vrksasana", "Una postura de equilibrio fundamental.", R.drawable.ic_tree_pose));
+        poses.add(new Pose("Virabhadrasana I", "Fortalece las piernas y el tronco.", R.drawable.ic_warrior_pose));
 
         PoseAdapter adapter = new PoseAdapter(poses);
         rvPoses.setAdapter(adapter);
