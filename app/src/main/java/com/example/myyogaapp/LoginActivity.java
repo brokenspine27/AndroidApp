@@ -1,7 +1,5 @@
 package com.example.myyogaapp;
 
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,8 +30,10 @@ public class LoginActivity extends BaseActivity {
                 showSimulatedActionSuccess(R.string.dialog_login_message, new Runnable() {
                     @Override
                     public void run() {
-                        // Después de Aceptar el AlertDialog, se podría navegar a la pantalla principal
-                        Toast.makeText(LoginActivity.this, "Navegando a la pantalla principal...", Toast.LENGTH_SHORT).show();
+                        // Después de Aceptar el AlertDialog, navegamos a la pantalla principal
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish(); // Opcional: cierra LoginActivity para que el usuario no pueda volver.
                     }
                 });
             }
@@ -58,4 +58,3 @@ public class LoginActivity extends BaseActivity {
         });
     }
 }
-

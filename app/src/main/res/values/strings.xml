@@ -26,5 +26,7 @@
 
     <!-- Splash Screen -->
 <string name="splash_welcome">NAMASTE</string>
+    <string name="logo_description">Logo de la aplicación</string>
+    <string name="btn_back">Volver</string>
     
     </resources>
