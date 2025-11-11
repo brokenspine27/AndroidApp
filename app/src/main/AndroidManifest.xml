@@ -24,6 +24,7 @@
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".DetailActivity" />
+        <activity android:name=".AddPoseActivity" />
 
     </application>
 </manifest>

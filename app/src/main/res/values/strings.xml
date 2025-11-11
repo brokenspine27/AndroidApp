@@ -28,5 +28,9 @@
 <string name="splash_welcome">NAMASTE</string>
     <string name="logo_description">Logo de la aplicación</string>
     <string name="btn_back">Volver</string>
+    <string name="add_pose">Añadir nueva postura</string>
+    <string name="hint_pose_title">Título de la postura</string>
+    <string name="hint_pose_description">Descripción de la postura</string>
+    <string name="save_pose">Guardar Postura</string>
     
     </resources>
