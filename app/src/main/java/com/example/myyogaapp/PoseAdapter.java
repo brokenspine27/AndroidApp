@@ -1,5 +1,6 @@
 package com.example.myyogaapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,15 +29,24 @@ public class PoseAdapter extends RecyclerView.Adapter<PoseAdapter.PoseViewHolder
     @Override
     public void onBindViewHolder(@NonNull PoseViewHolder holder, int position) {
         Pose pose = poses.get(position);
-        holder.ivPose.setImageResource(pose.getImageResourceId());
         holder.tvTitle.setText(pose.getTitle());
         holder.tvDescription.setText(pose.getDescription());
+
+        // Convertir el nombre de la imagen (String) a un ID de recurso (int)
+        Context context = holder.itemView.getContext();
+        String imageName = pose.getImageName();
+        if (imageName != null && !imageName.isEmpty()) {
+            int imageResId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+            if (imageResId != 0) { // 0 significa que no se encontró el recurso
+                holder.ivPose.setImageResource(imageResId);
+            }
+        }
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), DetailActivity.class);
             intent.putExtra("title", pose.getTitle());
             intent.putExtra("description", pose.getDescription());
-            intent.putExtra("image", pose.getImageResourceId());
+            intent.putExtra("imageName", pose.getImageName()); // Enviamos el nombre de la imagen, no el ID
             v.getContext().startActivity(intent);
         });
     }

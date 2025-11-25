@@ -3,6 +3,7 @@
 
     <!-- Nota: Debes crear el drawable ic_om_yoga.png en res/drawable -->
     <application
+        android:name=".MyYogaApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_om_yoga"
         android:label="@string/app_name"
@@ -24,6 +25,7 @@
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".DetailActivity" />
+        <activity android:name=".AddPoseActivity" />
 
     </application>
 </manifest>
