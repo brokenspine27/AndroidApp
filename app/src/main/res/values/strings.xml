@@ -13,20 +13,27 @@
     <string name="btn_register">REGISTRARME</string>
     <string name="btn_recover">ENVIAR ENLACE DE RECUPERACIÓN</string>
 
-<string name="link_register">¿No tienes cuenta? Regístrate aquí.</string>
-<string name="link_forgot_password">¿Olvidaste tu contraseña?</string>
-<string name="link_back_to_login">Volver a Iniciar Sesión</string>
+    <string name="link_register">¿No tienes cuenta? Regístrate aquí.</string>
+    <string name="link_forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="link_back_to_login">Volver a Iniciar Sesión</string>
 
     <!-- Mensajes de simulación (AlertDialog) -->
-<string name="dialog_success_title">Éxito</string>
-<string name="dialog_login_message">Simulación: ¡Inicio de sesión exitoso! (ID de usuario simulado: 101)</string>
-<string name="dialog_register_message">Simulación: Cuenta creada. Por favor, revisa tu correo para verificar.</string>
-<string name="dialog_recover_message">Simulación: Se ha enviado un enlace de recuperación a tu correo.</string>
-<string name="dialog_ok">Aceptar</string>
+    <string name="dialog_success_title">Éxito</string>
+    <string name="dialog_login_message">Simulación: ¡Inicio de sesión exitoso! (ID de usuario simulado: 101)</string>
+    <string name="dialog_register_message">Simulación: Cuenta creada. Por favor, revisa tu correo para verificar.</string>
+    <string name="dialog_recover_message">Simulación: Se ha enviado un enlace de recuperación a tu correo.</string>
+    <string name="dialog_ok">Aceptar</string>
 
     <!-- Splash Screen -->
-<string name="splash_welcome">NAMASTE</string>
+    <string name="splash_welcome">NAMASTE</string>
     <string name="logo_description">Logo de la aplicación</string>
     <string name="btn_back">Volver</string>
-    
-    </resources>
+
+    <!-- Add Pose Screen -->
+    <string name="add_pose">Añadir nueva postura</string>
+    <string name="hint_pose_title">Título de la postura</string>
+    <string name="hint_pose_description">Descripción de la postura</string>
+    <string name="select_image">Seleccionar Imagen</string>
+    <string name="save_pose">GUARDAR POSTURA</string>
+
+</resources>
