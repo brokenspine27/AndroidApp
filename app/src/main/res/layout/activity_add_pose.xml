@@ -31,26 +31,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pose_title" />
 
-    <Button
-        android:id="@+id/btn_select_image"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_image_url"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/select_image"
-        android:textColor="@color/colorAccent"
+        android:hint="@string/hint_image_url"
+        android:textColor="@color/textColorPrimary"
+        android:textColorHint="@color/textColorSecondary"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pose_description" />
-
-    <ImageView
-        android:id="@+id/iv_pose_preview"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/btn_select_image"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_image" />
 
     <Button
         android:id="@+id/btn_save_pose"
@@ -62,6 +53,6 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_pose_preview" />
+        app:layout_constraintTop_toBottomOf="@+id/et_image_url" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

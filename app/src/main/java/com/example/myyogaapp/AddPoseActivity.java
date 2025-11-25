@@ -2,24 +2,20 @@ package com.example.myyogaapp;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AddPoseActivity extends AppCompatActivity {
 
-    private EditText etPoseTitle, etPoseDescription;
+    private EditText etPoseTitle, etPoseDescription, etImageUrl;
     private Button btnSavePose;
     private FirebaseFirestore db;
+
+    private boolean isEditing = false;
+    private String poseId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,46 +26,53 @@ public class AddPoseActivity extends AppCompatActivity {
 
         etPoseTitle = findViewById(R.id.et_pose_title);
         etPoseDescription = findViewById(R.id.et_pose_description);
+        etImageUrl = findViewById(R.id.et_image_url);
         btnSavePose = findViewById(R.id.btn_save_pose);
 
-        // TODO: Implementar la selección de imagen (paso complejo)
-        // Por ahora, se guardará sin imagen o con un nombre de imagen predefinido.
+        // Comprobar si estamos en modo de edición
+        if (getIntent().hasExtra("isEditing")) {
+            isEditing = getIntent().getBooleanExtra("isEditing", false);
+            poseId = getIntent().getStringExtra("poseId");
 
-        btnSavePose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveNewPose();
+            if (isEditing) {
+                setTitle("Editar Postura");
+                etPoseTitle.setText(getIntent().getStringExtra("title"));
+                etPoseDescription.setText(getIntent().getStringExtra("description"));
+                etImageUrl.setText(getIntent().getStringExtra("imageUrl"));
             }
-        });
+        }
+
+        btnSavePose.setOnClickListener(v -> savePose());
     }
 
-    private void saveNewPose() {
+    private void savePose() {
         String title = etPoseTitle.getText().toString().trim();
         String description = etPoseDescription.getText().toString().trim();
+        String imageUrl = etImageUrl.getText().toString().trim();
 
-        if (TextUtils.isEmpty(title) || TextUtils.isEmpty(description)) {
+        if (TextUtils.isEmpty(title) || TextUtils.isEmpty(description) || TextUtils.isEmpty(imageUrl)) {
             Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Por ahora, no se asigna ninguna imagen. El usuario podría introducir un nombre de imagen.
-        String imageName = "ic_default_pose"; // Un placeholder
+        Pose pose = new Pose(title, description, imageUrl);
 
-        Pose newPose = new Pose(title, description, imageName);
-
-        db.collection("poses").add(newPose)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(AddPoseActivity.this, "Postura guardada con éxito", Toast.LENGTH_SHORT).show();
-                        finish(); // Cierra la actividad y vuelve a HomeActivity
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddPoseActivity.this, "Error al guardar la postura: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        if (isEditing) {
+            // Actualizar una postura existente
+            db.collection("poses").document(poseId).set(pose)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(this, "Postura actualizada con éxito", Toast.LENGTH_SHORT).show();
+                        finish();
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(this, "Error al actualizar la postura", Toast.LENGTH_SHORT).show());
+        } else {
+            // Crear una nueva postura
+            db.collection("poses").add(pose)
+                    .addOnSuccessListener(documentReference -> {
+                        Toast.makeText(this, "Postura guardada con éxito", Toast.LENGTH_SHORT).show();
+                        finish();
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(this, "Error al guardar la postura", Toast.LENGTH_SHORT).show());
+        }
     }
 }

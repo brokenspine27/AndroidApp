@@ -23,6 +23,11 @@
     <string name="dialog_register_message">Simulación: Cuenta creada. Por favor, revisa tu correo para verificar.</string>
     <string name="dialog_recover_message">Simulación: Se ha enviado un enlace de recuperación a tu correo.</string>
     <string name="dialog_ok">Aceptar</string>
+    <string name="dialog_delete_title">Confirmar Eliminación</string>
+    <string name="dialog_delete_message">¿Estás seguro de que quieres eliminar esta postura?</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="dialog_delete">Eliminar</string>
+
 
     <!-- Splash Screen -->
     <string name="splash_welcome">NAMASTE</string>
@@ -35,5 +40,9 @@
     <string name="hint_pose_description">Descripción de la postura</string>
     <string name="select_image">Seleccionar Imagen</string>
     <string name="save_pose">GUARDAR POSTURA</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="hint_image_url">URL de la imagen</string>
+    <string name="btn_edit">Editar</string>
+    <string name="btn_delete">Eliminar</string>
 
 </resources>

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class PoseAdapter extends RecyclerView.Adapter<PoseAdapter.PoseViewHolder> {
@@ -32,21 +33,22 @@ public class PoseAdapter extends RecyclerView.Adapter<PoseAdapter.PoseViewHolder
         holder.tvTitle.setText(pose.getTitle());
         holder.tvDescription.setText(pose.getDescription());
 
-        // Convertir el nombre de la imagen (String) a un ID de recurso (int)
+        // Usar Glide para cargar la imagen desde la URL
         Context context = holder.itemView.getContext();
-        String imageName = pose.getImageName();
-        if (imageName != null && !imageName.isEmpty()) {
-            int imageResId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
-            if (imageResId != 0) { // 0 significa que no se encontró el recurso
-                holder.ivPose.setImageResource(imageResId);
-            }
+        String imageUrl = pose.getImageUrl();
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            Glide.with(context)
+                    .load(imageUrl)
+                    .into(holder.ivPose);
         }
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), DetailActivity.class);
+            // Añadir el ID de la postura al intent
+            intent.putExtra("poseId", pose.getId());
             intent.putExtra("title", pose.getTitle());
             intent.putExtra("description", pose.getDescription());
-            intent.putExtra("imageName", pose.getImageName()); // Enviamos el nombre de la imagen, no el ID
+            intent.putExtra("imageUrl", pose.getImageUrl());
             v.getContext().startActivity(intent);
         });
     }
